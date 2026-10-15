@@ -20,3 +20,5 @@
 6. Layer the rice and chicken in a pot.
 7. Cover and cook on low heat until fully done.
 8. Serve hot.
+9. Let the biryani rest for 10 minutes before serving.
+10. Garnish with fried onions before serving.
