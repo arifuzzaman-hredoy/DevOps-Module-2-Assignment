@@ -1,151 +1,225 @@
-# Nanu's Recipe Book — Git Assignment Report
+# Nanu's Recipe Book — My Git Assignment
 
-## 1. Project Overview
+## 1. Introduction
 
-This project demonstrates Git version control through Nanu's Recipe Book. I practiced repository initialization, staging, committing, branching, merging, conflict resolution, remote repositories, cloning, fetching, pulling, stashing, moving files, deleting files, and inspecting commit history.
+For this assignment, I worked on a small project called **Nanu's Recipe Book**. I used different Git commands to manage recipes, track changes, and learn how Git works in real projects.
 
-GitHub Repository: https://github.com/arifuzzaman-hredoy/DevOps-Module-2-Assignment
+At first, I practiced basic commands. Later, I worked with branches, merge conflicts, GitHub, and some advanced Git commands. I also used a separate clone of my repository to practice how two people can work on the same project.
 
-## 2. Chapter 1: Git Basics
+**GitHub Repository:**
+https://github.com/arifuzzaman-hredoy/DevOps-Module-2-Assignment
 
-I configured my Git identity and initialized the `nanur-khata` repository.
+## 2. Chapter 1: Getting Started with Git
 
-Commands practiced:
+First, I configured my Git username and email. Then I initialized the repository and started working on the recipe files.
 
-* `git config --global user.name`
-* `git config --global user.email`
-* `git init`
-* `git status`
-* `git add`
-* `git diff`
-* `git diff --staged`
-* `git commit`
-* `git reset`
-
-I created the Bhapa Pitha recipe and updated the jaggery quantity from 2 cups to 1.5 cups.
-
-I also staged `bazar-list.txt` and used `git reset bazar-list.txt` to unstage it without deleting the file.
-
-## 3. Chapter 2: .gitignore
-
-I created a `.gitignore` file containing:
-
+```bash
+git config --global user.name
+git config --global user.email
+git init
+git status
 ```
+
+I created `bhapa-pitha.md` and added the ingredients and cooking instructions for Bhapa Pitha.
+
+After that, I changed the amount of date palm jaggery from 2 cups to 1.5 cups. I used `git diff` to see the changes before staging them and `git diff --staged` to check the staged changes.
+
+When everything looked correct, I committed the changes.
+
+I also practiced unstaging a file. I added `bazar-list.txt` to the staging area and then used:
+
+```bash
+git reset bazar-list.txt
+```
+
+The file remained in my folder, but it was removed from the staging area. This helped me understand that unstaging a file does not mean deleting it.
+
+## 3. Chapter 2: Using .gitignore
+
+Next, I learned how to keep unnecessary or private files out of Git.
+
+I created a `.gitignore` file with these rules:
+
+```gitignore
 secret-masala.txt
 *.tmp
 draft/
 ```
 
-These rules ignore the secret recipe file, temporary files, and the draft directory.
+I created some test files to check whether the rules were working. The secret recipe, temporary files, and files inside the draft directory were ignored.
 
-I verified the ignore rules with Git status and ignore-related checks.
+To verify this, I used:
 
-The secret recipe was kept out of version control.
-
-## 4. Chapter 3: Branching and Merging
-
-I created the `eid-special` branch and added Biryani and Shemai recipes in separate commits.
-
-I merged the branch into `main`.
-
-I also practiced a merge conflict using `conflict-recipe.md`. Two branches changed the sugar quantity differently. Git reported a conflict, and I resolved it by keeping 4 tablespoons of sugar.
-
-After resolving the conflict, I staged and committed the corrected file.
-
-## 5. Chapter 4: Remote Repositories
-
-I connected my local repository to GitHub using a remote named `origin`.
-
-I pushed the `main` branch to GitHub and cloned the repository into a separate directory for Mitu.
-
-Mitu added the Chittagong Mezban recipe and pushed it to the remote repository. A later recipe change was also pushed from the clone.
-
-In the original repository, I used `git fetch` and `git merge` to integrate remote changes. I also practiced `git pull`.
-
-### Fetch + Merge vs Pull
-
-* `git fetch` downloads remote updates without merging them into the current branch.
-* `git merge` integrates the selected branch into the current branch.
-* `git pull` fetches remote changes and then integrates them into the current branch.
-
-## 6. Chapter 5: Stash, File Organization, and History
-
-### Stashing unfinished work
-
-I started an unfinished `halua.md` recipe and saved it using:
-
+```bash
+git check-ignore -v secret-masala.txt recipe-notes.tmp cooking-time.tmp draft/unfinished-recipe.md
 ```
+
+I also checked whether those files were tracked by Git.
+
+This part helped me understand why `.gitignore` is useful. It reduces the chance of accidentally committing files that should stay outside the repository.
+
+## 4. Chapter 3: Working with Branches
+
+For the next part, I created a branch called `eid-special`.
+
+```bash
+git branch eid-special
+git switch eid-special
+```
+
+On that branch, I created two recipe files: `biryani.md` and `shemai.md`. I committed them separately so that each recipe had its own commit.
+
+After finishing the recipes, I switched back to `main` and merged the branch.
+
+```bash
+git switch main
+git merge eid-special
+```
+
+This helped me understand how branches allow us to work on separate tasks without making every change directly on the main branch.
+
+### Resolving a Merge Conflict
+
+I also practiced a merge conflict using `conflict-recipe.md`, which contained a Payesh recipe.
+
+Two branches changed the sugar quantity differently. One used 2 tablespoons, while the other used 6 tablespoons. When I merged the branches, Git could not automatically decide which change to keep.
+
+I opened the file, checked the conflicting lines, and resolved the conflict by keeping 4 tablespoons of sugar. Then I staged and committed the corrected file.
+
+This was useful because it showed me that Git cannot resolve every conflict automatically. Sometimes we need to review the changes and decide what the final version should contain.
+
+## 5. Chapter 4: Using GitHub
+
+After learning the basics of local Git, I connected my repository to GitHub.
+
+```bash
+git remote add origin https://github.com/arifuzzaman-hredoy/DevOps-Module-2-Assignment.git
+git push -u origin main
+```
+
+I then cloned the repository into another folder called `mitu-recipe-book`. I used this folder to simulate another person working on the same project.
+
+In the cloned repository, Mitu added `chittagong-mezban.md` and pushed the change to GitHub. Later, another recipe, `sylheti-shakora.md`, was also added and pushed.
+
+In my original repository, I used:
+
+```bash
+git fetch origin
+git merge origin/main
+```
+
+I also practiced:
+
+```bash
+git pull origin main
+```
+
+### What Is the Difference Between Fetch and Pull?
+
+I learned that `git fetch` downloads updates from the remote repository without automatically integrating them into my current branch.
+
+`git merge` integrates changes from another branch into the current branch.
+
+`git pull` fetches remote changes and then integrates them into the current branch.
+
+This part helped me understand how changes can move between a local repository, GitHub, and another contributor's clone.
+
+## 6. Chapter 5: Stash, File Organization, and Git History
+
+### Saving Unfinished Work
+
+While working on the Halua recipe, I had some unfinished changes. Instead of committing the incomplete recipe, I saved the work temporarily using:
+
+```bash
 git stash push -m "Save unfinished halua recipe"
 ```
 
-I improved the Biryani serving instructions, committed the change, and restored the unfinished Halua work using:
+I then updated the Biryani recipe by adding a resting time and a garnish instruction. I committed those changes before returning to the unfinished Halua work.
 
-```
+To restore the stashed changes, I used:
+
+```bash
 git stash pop
 ```
 
-I then completed and committed the Halua recipe.
+After that, I completed the Halua recipe and committed it.
 
-### Organizing recipes
+This helped me understand how stash can be useful when I need to switch tasks without making an unfinished commit.
 
-I created category directories and used `git mv` to organize the recipes:
+### Organizing the Recipe Files
 
-* `recipes/rice-dishes/biryani.md`
-* `recipes/sweets/shemai.md`
-* `recipes/sweets/halua.md`
-* `recipes/traditional/bhapa-pitha.md`
-* `recipes/traditional/chittagong-mezban.md`
-* `recipes/traditional/sylheti-shakora.md`
+As the project grew, I organized the recipes into separate folders based on their categories.
 
-I inspected rename detection using:
+The final structure included:
 
+```text
+recipes/
+├── rice-dishes/
+│   └── biryani.md
+├── sweets/
+│   ├── halua.md
+│   └── shemai.md
+└── traditional/
+    ├── bhapa-pitha.md
+    ├── chittagong-mezban.md
+    └── sylheti-shakora.md
 ```
+
+I used `git mv` to move the recipe files into the correct directories. After organizing them, I committed the changes.
+
+I also ran:
+
+```bash
 git log --stat -M
 ```
 
-### Deleting an outdated recipe
+This allowed me to review file changes and see Git's rename detection in action.
 
-I created and committed `old-recipe.md`, then removed it using:
+### Removing an Old Recipe
 
-```
+I created a file called `old-recipe.md`, committed it, and then removed it using:
+
+```bash
 git rm old-recipe.md
+git commit -m "Remove outdated pitha recipe draft"
 ```
 
-I committed the deletion separately so the history records both the file's creation and removal.
+I learned that `git rm` removes a tracked file and stages that removal for the next commit. Keeping the creation and deletion in separate commits also made the history easier to follow.
 
-### Inspecting a commit
+### Checking a Commit
 
-I used:
+I used the following command to inspect a particular commit:
 
-```
+```bash
 git show 5c9f5ad
 ```
 
-This displayed the Biryani improvement commit and its recorded changes.
+It displayed the Biryani improvement commit and the changes made in that commit.
 
-### Practicing reset --hard safely
+### Practicing Reset on a Separate Branch
 
-I created a separate branch named `reset-test` and ran:
+Finally, I created a branch called `reset-test` to practice `git reset --hard`.
 
-```
+```bash
+git switch -c reset-test
 git reset --hard 136cb87
 ```
 
-The test branch moved back to the recipe organization commit. The later draft creation and deletion commits no longer appeared in the test branch's current history.
+The test branch moved back to the recipe organization commit. The later commits were no longer part of that branch's current history, but they remained in `main`.
 
-I switched back to `main` and verified that those commits remained in the main branch.
+I switched back to `main` afterward and checked the repository history.
 
-### Why reset --hard and rebase can be dangerous
+I learned that `git reset --hard` can discard uncommitted tracked-file changes and move a branch to an earlier commit. It should be used carefully.
 
-`git reset --hard` can move a branch backwards and discard uncommitted tracked-file changes. Commits removed from a branch's current history may become difficult to find if no reference remains.
+I also learned that rebasing a shared branch can cause problems because it rewrites commit history. Other contributors may still depend on the original commits.
 
-`git rebase` rewrites commit history and may create new commit hashes. Rewriting a shared branch can disrupt collaborators who based their work on the old history.
+Practicing reset on a separate branch helped me explore the command without intentionally moving the main branch backward.
 
-These operations require particular care on shared branches.
+## 7. Git Commands I Practiced
 
-## 7. Important Git Commands Practiced
+During this assignment, I practiced the following commands:
 
-```
+```bash
 git init
 git status
 git add
@@ -154,10 +228,9 @@ git diff --staged
 git commit
 git reset
 git branch
-git checkout
 git switch
 git merge
-git remote add origin
+git remote -v
 git push
 git clone
 git fetch
@@ -172,37 +245,61 @@ git show
 git reset --hard
 ```
 
-## 8. Final Verification
+Each command helped me understand a different part of Git, from tracking everyday changes to managing branches and inspecting project history.
 
-Before submission, I will verify:
+## 8. Final Checks
 
-* The repository is pushed to GitHub.
-* The working tree is clean.
-* The required branches are present.
-* The commit history is visible.
-* `.gitignore` excludes secret and temporary files.
-* This report is committed to the repository.
+Before finishing the assignment, I checked the repository status, remote configuration, branches, and commit history.
 
-Final history command:
+Commands used:
 
-```
+```bash
+git status
+git remote -v
+git branch
 git log --oneline --graph --all
+git status -sb
 ```
+
+The final checks showed that:
+
+* The local `main` branch was synchronized with `origin/main`.
+* The working tree was clean.
+* The required local branches were present.
+* The commit history contained the work completed during the assignment.
+* The `.gitignore` rules had been tested.
+* The report had been committed and pushed to GitHub.
+* The final Git history screenshot had been committed and pushed.
 
 ## 9. Screenshots
 
-Add screenshots showing:
+I captured and committed the following screenshot:
 
-1. Git configuration and repository initialization.
-2. The `.gitignore` rules and verification.
-3. Branch creation and merging.
-4. Merge conflict and its resolution.
-5. Remote repository operations.
-6. Stash, recipe organization, and file deletion.
-7. The `reset-test` experiment.
-8. Final Git history and GitHub repository.
+**1. Final Git History**
 
-## 10. Conclusion
+File: `screenshots/final-git-history.png`
 
-This project helped me practice Git version control in a realistic recipe-book scenario. I learned how to track changes, collaborate through remote repositories, manage branches, resolve conflicts, save unfinished work, organize files, and inspect or carefully test changes to commit history.
+This screenshot is intended to show the commit history and branch information.
 
+I still need to add the following screenshots if separate evidence is required for each part of the assignment:
+
+2. Git configuration and repository initialization.
+3. `.gitignore` rules and verification.
+4. Branch creation and merging.
+5. Merge conflict and its resolution.
+6. Remote repository operations.
+7. Stash, recipe organization, and file deletion.
+8. The `reset-test` experiment.
+
+## 10. What I Learned
+
+This assignment gave me practical experience with Git instead of only learning the commands theoretically.
+
+I learned how to track changes, create commits, work with branches, resolve conflicts, and collaborate through GitHub. I also became more familiar with stash, file organization, and the risks of changing commit history.
+
+One important thing I learned is that Git is not just about saving files. It also helps us understand what changed, when it changed, and how different versions of a project are connected.
+
+Overall, this assignment helped me build a better foundation in Git and gave me more confidence in using version control for future DevOps projects.
+
+**GitHub Repository:**
+https://github.com/arifuzzaman-hredoy/DevOps-Module-2-Assignment
