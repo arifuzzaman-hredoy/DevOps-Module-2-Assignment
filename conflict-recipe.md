@@ -3,7 +3,7 @@
 ## Ingredients
 - 1 litre milk
 - 1/2 cup rice
-- 4 tablespoons sugar
+- 6 tablespoons sugar
 
 ## Instructions
 1. Boil the milk.
