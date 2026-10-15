@@ -22,7 +22,7 @@ git status
 
 I created `bhapa-pitha.md` and added the ingredients and cooking instructions for Bhapa Pitha.
 
-After that, I changed the amount of date palm jaggery from 2 cups to 1.5 cups. I used `git diff` to see the changes before staging them and `git diff --staged` to check the staged changes.
+After that, I changed the amount of date palm jaggery from 2 cups to 1.5 cups. I used `git diff` to see the changes before staging them and `git diff --staged` to check the staged changes. `git diff` displays changes in the working tree that have not been staged. In contrast, `git diff --staged` displays changes that are already in the staging area and are ready for the next commit.
 
 When everything looked correct, I committed the changes.
 
@@ -209,9 +209,9 @@ The test branch moved back to the recipe organization commit. The later commits 
 
 I switched back to `main` afterward and checked the repository history.
 
-I learned that `git reset --hard` can discard uncommitted tracked-file changes and move a branch to an earlier commit. It should be used carefully.
+I learned that `git reset --hard` moves the current branch to a specified commit and resets the index and working tree to match it. It can permanently discard uncommitted changes to tracked files. In my experiment, I ran this command on the separate `reset-test` branch and moved it back to commit `136cb87`. Later commits were no longer part of that branch's current history, but they remained on `main`. This is why I used a separate test branch instead of resetting `main`.
 
-I also learned that rebasing a shared branch can cause problems because it rewrites commit history. Other contributors may still depend on the original commits.
+I also learned that rebasing a shared branch can cause problems because it rewrites commit history. Other contributors may still depend on the original commits. Resetting a shared branch with `git reset --hard` can also cause problems if it moves the branch backward or discards uncommitted work. These commands should be used carefully when collaborating with others.
 
 Practicing reset on a separate branch helped me explore the command without intentionally moving the main branch backward.
 
