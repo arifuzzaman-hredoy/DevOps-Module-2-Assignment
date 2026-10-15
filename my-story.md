@@ -281,15 +281,7 @@ File: `screenshots/final-git-history.png`
 
 This screenshot is intended to show the commit history and branch information.
 
-I still need to add the following screenshots if separate evidence is required for each part of the assignment:
-
-2. Git configuration and repository initialization.
-3. `.gitignore` rules and verification.
-4. Branch creation and merging.
-5. Merge conflict and its resolution.
-6. Remote repository operations.
-7. Stash, recipe organization, and file deletion.
-8. The `reset-test` experiment.
+The final Git history screenshot has been committed and pushed to GitHub. It provides evidence of the commit history and branch information. Additional screenshots for individual steps can be included if the instructor specifically requires separate evidence for each step.
 
 ## 10. What I Learned
 
