@@ -273,15 +273,18 @@ The final checks showed that:
 
 ## 9. Screenshots
 
-I captured and committed the following screenshot:
+The following screenshots are included as assignment evidence:
 
-**1. Final Git History**
+1. `screenshots/01-git-configuration.png` — Git configuration and repository status.
+2. `screenshots/02-git-diff-and-unstaging.png` — Git diff and unstaging practice.
+3. `screenshots/03-gitignore-verification.png` — Verification of ignored files and directories.
+4. `screenshots/04-branch-and-merge.png` — Branches and merge history.
+5. `screenshots/05-merge-conflict.png` — Payesh merge-conflict resolution.
+6. `screenshots/06-github-collaboration.png` — Remote repository and collaboration history.
+7. `screenshots/07-stash-organization-reset.png` — Stash, recipe organization, and reset practice.
+8. `screenshots/final-git-history.png` — Final commit history and branch information.
 
-File: `screenshots/final-git-history.png`
-
-This screenshot is intended to show the commit history and branch information.
-
-The final Git history screenshot has been committed and pushed to GitHub. It provides evidence of the commit history and branch information. Additional screenshots for individual steps can be included if the instructor specifically requires separate evidence for each step.
+These screenshots are intended to document the practical work completed during the assignment.
 
 ## 10. What I Learned
 
